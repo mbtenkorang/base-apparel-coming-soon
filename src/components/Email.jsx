@@ -1,11 +1,21 @@
+import { useState } from "react";
 import buttonIcon from "/images/icon-arrow.svg";
 
 const Email = () => {
+  const [errorMessage, setErrorMessage] = useState("error");
+
   const handleClick = (event) => {
     event.preventDefault();
     const re = /.+\@.+\..+/;
     let ele = document.getElementById("emailAddress");
     let errormsg = document.getElementById("error");
+
+    if (ele.value === "") {
+      errormsg.classList.remove("hidden");
+      return setErrorMessage(
+        (errorMessage) => (errorMessage = "Field is blank")
+      );
+    }
     if (re.test(ele.value)) {
       if (errormsg.classList.contains("block")) {
         errormsg.classList.remove("block");
@@ -13,6 +23,9 @@ const Email = () => {
       errormsg.classList.add("hidden");
     } else {
       errormsg.classList.remove("hidden");
+      setErrorMessage(
+        (errorMessage) => (errorMessage = "Invalid email address")
+      );
     }
   };
 
@@ -28,7 +41,6 @@ const Email = () => {
           placeholder="Email address"
           size={64}
           maxLength={64}
-          pattern=".+\@.+\..+"
           autoComplete="off"
         />
         <button
@@ -40,7 +52,7 @@ const Email = () => {
         </button>
       </form>
       <p id="error" className="text-xl text-red-400 text-center hidden mt-2">
-        Invalid Email
+        {errorMessage}
       </p>
     </div>
   );
