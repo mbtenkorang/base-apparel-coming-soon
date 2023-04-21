@@ -17,12 +17,8 @@ const Email = () => {
   };
 
   return (
-    <>
-      <form
-        action=""
-        method="get"
-        className="mt-6 mx-3 flex items-center justify-center"
-      >
+    <div className="mt-6 mb-10 mx-3">
+      <form action="" method="get" className="flex items-center justify-center">
         <label htmlFor="emailAddress"></label>
         <input
           className="w-4/5 py-3 px-6 text-xl bg-bg-grad-verylightpink border border-bg-grad-darkpink rounded-full"
@@ -43,10 +39,10 @@ const Email = () => {
           <img src={buttonIcon} aria-hidden="true" alt="" />
         </button>
       </form>
-      <p id="error" className="text-xl text- text-center hidden">
+      <p id="error" className="text-xl text-red-400 text-center hidden mt-2">
         Invalid Email
       </p>
-    </>
+    </div>
   );
 };
 

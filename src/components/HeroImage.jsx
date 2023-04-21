@@ -3,8 +3,8 @@ import largeImage from "/images/hero-desktop.jpg";
 
 const HeroImage = () => {
   return (
-    <div>
-      <picture>
+    <div className="">
+      <picture className="">
         <source media="(min-width: 600px)" srcSet={largeImage} />
         <img className="w-full" src={smallImage} alt="" aria-hidden="true" />
       </picture>
